@@ -10,26 +10,28 @@ b = [0.18 0.1 0.3 0.1 0.18];
 
 a = [1 -1.15 1.5 -0.7 0.25 -0.18];
 
-n = (0:100);
+n = (0:200);
 
-h = impz(b, a, length(n));
+for hlen = [length(n) length(n) / 2]
+  h = impz(b, a, hlen);
 
-y_recursive = filter(b, a, (n >= 0));
+  y_recursive = filter(b, a, (n >= 0));
 
-y_conv = conv(h, (n >= 0))(n + 1);
+  y_conv = conv(h, (n >= 0))(n + 1);
 
-y_filter_nonrecursive = filter(h, 1, (n >= 0));
+  y_filter_nonrecursive = filter(h, 1, (n >= 0));
 
-printf("Error y_recursive vs y_conv %d\n", ...
-    sumsq(y_recursive - y_conv));
-printf("Error y_recursive vs y_filter_nonrecursive %d\n", ...
-    sumsq(y_recursive - y_filter_nonrecursive));
+  printf("Error y_recursive vs y_conv %d\n", ...
+      sumsq(y_recursive - y_conv));
+  printf("Error y_recursive vs y_filter_nonrecursive %d\n", ...
+      sumsq(y_recursive - y_filter_nonrecursive));
 
-figure();
+  figure();
 
-subplot(221); stem(n, h); xlabel('n'); ylabel('h[n]');
-subplot(222); stem(n, y_recursive); xlabel('n');
-ylabel('yrec[n]');
-subplot(223); stem(n, y_conv); xlabel('n'); ylabel('yconv[n]');
-subplot(224); stem(n, y_filter_nonrecursive); xlabel('n');
-ylabel('yfilternonrecursive[n]');
+  subplot(221); stem(0 : length(h) - 1, h); xlabel('n'); ylabel('h[n]');
+  subplot(222); stem(n, y_recursive); xlabel('n');
+  ylabel('yrec[n]');
+  subplot(223); stem(n, y_conv); xlabel('n'); ylabel('yconv[n]');
+  subplot(224); stem(n, y_filter_nonrecursive); xlabel('n');
+  ylabel('yfilternonrecursive[n]');
+end
