@@ -1,4 +1,4 @@
-% ch02/basic_problem_39.m
+% ch02/assessment_problem_39.m
 
 n = -50 : 50;
 x = ifelse(n >= 0 & n <= 10, n, 0);

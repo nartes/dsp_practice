@@ -1,4 +1,4 @@
-% ch02/basic_problem_38.m
+% ch02/assessment_problem_38.m
 
 delta = @(n) (n == 0);
 u = @(n) (n >= 0);

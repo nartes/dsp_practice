@@ -1,6 +1,6 @@
-% ch02/basic_problem_42.m
+% ch02/assessment_problem_42.m
 
-function basic_problem_42
+function assessment_problem_42
   n = 0 : 100;
   h = agnosto(n == 0);
 
