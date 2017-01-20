@@ -8,7 +8,7 @@ function tutorial_problem_19
 
   Fs = Fs0 / 4;
   if Fs > Fs0
-    error("TODO(nartes): interploate for upsampling");
+    error("TODO(nartes): interpolate for upsampling");
     return;
   end
 
